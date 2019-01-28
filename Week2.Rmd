@@ -27,9 +27,6 @@ cs
 ```
 
 
-
-
-
 ```{r}
 print (" 2: Vectors" )
 Omaha <- c( 16, 16, 8, 30)
@@ -55,7 +52,6 @@ print(Omaha)
 is.na (Omaha)
 is.nan (Omaha)
 
-
 Western_Illinois <- c(NaN, 	18, 	22, 	16 )
 print(Western_Illinois)
 is.na (Western_Illinois)
@@ -72,10 +68,6 @@ b <- (v/y)
 b
 
 ```
-
-
-
-
 
 
 ```{r}
@@ -110,9 +102,6 @@ finalWestern_Illinois
 
 
 
-
-
-
 ```{r}
 print (" 5: Matrics and DataFrames" )
 m <- rbind( Omaha, Western_Illinois)
@@ -128,8 +117,6 @@ WIUTable
 data.frame (WIUTable)
 
 ```
-
-
 
 
 
