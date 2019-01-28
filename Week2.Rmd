@@ -2,7 +2,9 @@
 title: "Week2"
 author: "Talal Elammas"
 date: "January 27, 2019"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 
@@ -112,9 +114,12 @@ Annabel_Graettinger <- c ( 3, 	0, 	3, 	2, 	0, 	1, 	19)
 Olivia_Kaufmann <- c(6, 0, 	9 ,	7 ,	0, 	5 ,	17)
 WIUTable <- data.frame( header,  Taylor_Hig.,Annabel_Graettinger, Olivia_Kaufmann  )
 WIUTable
-
+t (WIUTable)
+mat <- cbind(header ,  Taylor_Hig.,Annabel_Graettinger, Olivia_Kaufmann )
+mat
+t (mat)
 ## this is just a table conversion to data frame, the a bove is table creation
-data.frame (WIUTable)
+data.frame (t (WIUTable))
 
 ```
 
