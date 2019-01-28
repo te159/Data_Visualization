@@ -1,0 +1,141 @@
+---
+title: "Week2"
+author: "Talal Elammas"
+date: "January 27, 2019"
+output: html_document
+---
+
+
+## for submission
+```{r}
+print (" 1: number sequences" )
+s1 <- seq(1:10)   
+print (" normal integer number sequence" )
+print(s1)
+s4 <- seq(1.0, 10 , by = 0.9 )
+print (" step double numbers" )
+print(s4)
+ff <- seq(4, -10, by= -2)
+ff
+ns <- seq(999,991, by=-1 )
+ns
+ab <-seq.int(15, 25 , by=2)  
+ab
+cs <- seq( 80.05 , 70.05 , by= -0.85)
+cs
+
+```
+
+
+
+
+
+```{r}
+print (" 2: Vectors" )
+Omaha <- c( 16, 16, 8, 30)
+print(Omaha)
+Western_Illinois <- c(22, 	18, 	22, 	16 )
+print(Western_Illinois)
+## char vector
+header <- c('REB' , 'PE', 'A' ,'TO','BLK' , 'STL', 'PTS')
+Taylor_Hig. <- c (7,  1, 1, 	5, 	0, 	0, 	20) 
+Annabel_Graettinger <- c ( 3, 	0, 	3, 	2, 	0, 	1, 	19)
+Olivia_Kaufmann <- c(6, 0, 	9 ,	7 ,	0, 	5 ,	17)
+header
+Taylor_Hig.
+Annabel_Graettinger
+Olivia_Kaufmann
+```
+
+Omaha 	16 	16 	8 	30 	70 	6-11, 1-4
+Western Illinois 	22 	18 	22 	16
+```{r}
+print (" 3: Missing Values" )
+Omaha <- c(16,NA, 8 ,	NaN)
+print(Omaha)
+is.na (Omaha)
+is.nan (Omaha)
+
+
+Western_Illinois <- c(NaN, 	18, 	22, 	16 )
+print(Western_Illinois)
+is.na (Western_Illinois)
+is.nan (Western_Illinois)
+
+x=0
+y=1
+v =0
+w <- (y/x)
+w
+a <- (v/x)
+a
+b <- (v/y)
+b
+
+```
+
+
+
+
+
+
+```{r}
+print (" 4: subsetting Vectors : " )
+Omaha <- c(16, 	16, 8 ,	30)
+Western_Illinois <- c(22, 	18, 	22, 	16 )
+Omaha[1]
+Western_Illinois[1]
+Omaha[2]
+Western_Illinois[2]
+Omaha[1:4]
+Western_Illinois[1:4]
+print("Select all quarter' results where Omaha won")
+Omaha[ Omaha > Western_Illinois]
+print("Select all quarter' results where WIU won")
+Western_Illinois[ Omaha < Western_Illinois]
+
+
+## Final
+print("Total points in theGame")
+totalpointsInGame = Western_Illinois + Omaha  
+totalpointsInGame
+
+print("final Calculation")
+finalOmaha = sum(Omaha)
+finalOmaha
+finalWestern_Illinois = sum(Western_Illinois)
+finalWestern_Illinois
+
+
+```
+
+
+
+
+
+
+```{r}
+print (" 5: Matrics and DataFrames" )
+m <- rbind( Omaha, Western_Illinois)
+m
+header <- c('REB' , 'PE', 'A' ,'TO','BLK' , 'STL', 'PTS')
+Taylor_Hig. <- c (7,  1, 1, 	5, 	0, 	0, 	20) 
+Annabel_Graettinger <- c ( 3, 	0, 	3, 	2, 	0, 	1, 	19)
+Olivia_Kaufmann <- c(6, 0, 	9 ,	7 ,	0, 	5 ,	17)
+WIUTable <- data.frame( header,  Taylor_Hig.,Annabel_Graettinger, Olivia_Kaufmann  )
+WIUTable
+
+## this is just a table conversion to data frame, the a bove is table creation
+data.frame (WIUTable)
+
+```
+
+
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
