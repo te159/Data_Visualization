@@ -47,8 +47,7 @@ Annabel_Graettinger
 Olivia_Kaufmann
 ```
 
-Omaha 	16 	16 	8 	30 	70 	6-11, 1-4
-Western Illinois 	22 	18 	22 	16
+
 ```{r}
 print (" 3: Missing Values" )
 Omaha <- c(16,NA, 8 ,	NaN)
