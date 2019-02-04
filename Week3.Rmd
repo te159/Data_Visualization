@@ -135,16 +135,16 @@ restbpsMean2
 
 ```{r}
 ##5) Using lapply and your own you created in the previous step to find the sum and number of elements of the second vector. 
-# the sex table will just have values 0 , 1s I created a list of columns with age, Cholestrole, CheastPain vectors
+#My second vector had values of Male and female , 1 and 0s , so I used the third vectors as use in my lapply as Cholestrole vectors.
 
 
 print ("get the mean by the first method")
-mytable <- list( age,Cholestrole, CheastPain , restbps)
+mytable <- list( Cholestrole)
 getMeans <- lapply(mytable,getMean)
 getMeans
 
 print("get the mean by the second method:")
-mytable <- list( age,Cholestrole, CheastPain , restbps)
+mytable <- list( Cholestrole)
 getMeansLapply <- lapply(mytable,getMean2)
 getMeansLapply
 
