@@ -98,16 +98,34 @@ restbpsMean
 
 ```{r}
 ##4) Create a function that when called on each of the elements in your vector, finds the mean. Hint, you will use scoping rules to accumulate two global environment variables.
+nr = 0
+sum = 0
 
-getMean2 <- function(x){
-  nr = NROW(x)
+sumFuntion <- function (x) {
   
-  sum = 0
   for (i in seq_along(x)){
     
-    sum = sum+ sum(x[i])
+    sum = sum+ (x[i])
   }
-  mean2 = sum/nr
+  sum
+}
+
+
+nrFuntion <- function (x) {
+  
+  for (i in seq_along(x)){
+    
+    nr = 1 + nr
+  }
+  nr
+}
+
+
+getMean2 <- function(v){
+      
+    a = sumFuntion(v)
+    b = nrFuntion(v)
+    mean2 = a/b
   
 }
 
@@ -137,16 +155,18 @@ restbpsMean2
 ##5) Using lapply and your own you created in the previous step to find the sum and number of elements of the second vector. 
 #My second vector had values of Male and female , 1 and 0s , so I used the third vectors as use in my lapply as Cholestrole vectors.
 
-
 print ("get the mean by the first method")
 mytable <- list( Cholestrole)
 getMeans <- lapply(mytable,getMean)
 getMeans
 
-print("get the mean by the second method:")
+print("get the mean by the second method by using seperate functions with lapply:")
+
 mytable <- list( Cholestrole)
 getMeansLapply <- lapply(mytable,getMean2)
 getMeansLapply
+
+
 
 
 ```
