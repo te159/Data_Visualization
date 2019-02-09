@@ -1,0 +1,25 @@
+
+
+
+
+
+```{r}
+# install.packages("rvest")
+# calling the liberary
+
+library(rvest)
+
+
+Population <- read_html("https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population")
+
+
+myscrape <- data.frame ( html_table(Population, header = NA, trim = TRUE, fill = TRUE, dec = "")[[2]])
+
+myscrape
+
+oneto4 <- myscrape[1:4,1:3]
+oneto4
+
+
+```
+
