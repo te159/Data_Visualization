@@ -1,0 +1,29 @@
+
+
+
+
+
+```{r}
+# install.packages("rvest")
+# calling the liberary
+
+library(rvest)
+
+
+USpresident <- read_html("https://www.presidentsusa.net/birth.html")
+
+
+USpresidentsAge <- data.frame( html_table(USpresident, header = NA, trim = TRUE, fill = FALSE, dec = ""))
+                                ##[[2]])
+
+USpresidentsAge
+
+USpresidentsAge <- rbind ( )
+
+
+
+
+
+
+```
+
