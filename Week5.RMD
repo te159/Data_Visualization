@@ -16,12 +16,15 @@ USpresident <- read_html("https://www.presidentsusa.net/birth.html")
 USpresidentsAge <- data.frame( html_table(USpresident, header = NA, trim = TRUE, fill = FALSE, dec = ""))
                                 ##[[2]])
 
+USpresidentsAge$AgeAge_Death  <- c ("")
+
 USpresidentsAge
+USpresidentsAge ( Death.Date = "")
+AgeAge_Death <- as.Date(as.character(survey$date), format="%Y/%m/%d")-
+                  as.Date(as.character(survey$tx_start), format="%Y/%m/%d")
 
-USpresidentsAge <- rbind ( )
 
-
-
+#USpresidentsAge <- as.numeric( Sys.Date() - Dirth.Date)
 
 
 
