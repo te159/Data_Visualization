@@ -10,21 +10,20 @@
 library(rvest)
 
 
-USpresident <- read_html("https://www.presidentsusa.net/birth.html")
+Oldest <- read_html("https://en.wikipedia.org/wiki/Oldest_people#Ten_oldest_living_men")
 
 
-USpresidentsAge <- data.frame( html_table(USpresident, header = NA, trim = TRUE, fill = FALSE, dec = ""))
-                                ##[[2]])
+Oldest <- data.frame( html_table(Oldest, header = 1 , trim = TRUE, fill= TRUE , dec = " ")[[2]])
+  Oldest   
 
-USpresidentsAge$AgeAge_Death  <- c ("")
-
-USpresidentsAge
-USpresidentsAge ( Death.Date = "")
-AgeAge_Death <- as.Date(as.character(survey$date), format="%Y/%m/%d")-
-                  as.Date(as.character(survey$tx_start), format="%Y/%m/%d")
+##Calculate the age for the 10 olderst men in the world in years
 
 
-#USpresidentsAge <- as.numeric( Sys.Date() - Dirth.Date)
+Oldest$TodayAgeindays <- (Sys.Date()  - as.Date(Oldest$'Birth.date', "%d %B %Y"))/365
+
+Oldest
+
+
 
 
 
