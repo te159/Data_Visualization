@@ -5,9 +5,14 @@
 
 ```{r}
 # install.packages("rvest")
+#install.packages("lubridate")
+#install.packages("eeptools")
 # calling the liberary
-
+library(eeptools)
 library(rvest)
+library(lubridate)
+
+##Calculate the age for the 10 olderst men in the world in years
 
 
 Oldest <- read_html("https://en.wikipedia.org/wiki/Oldest_people#Ten_oldest_living_men")
@@ -19,7 +24,11 @@ Oldest <- data.frame( html_table(Oldest, header = 1 , trim = TRUE, fill= TRUE , 
 ##Calculate the age for the 10 olderst men in the world in years
 
 
-Oldest$TodayAgeindays <- (Sys.Date()  - as.Date(Oldest$'Birth.date', "%d %B %Y"))/365
+age <- floor( (as.numeric((Sys.Date() - as.Date(Oldest$'Birth.date', "%d %B %Y")) / 365.25) ))
+
+
+
+Oldest <- cbind.data.frame( Oldest, age)
 
 Oldest
 
