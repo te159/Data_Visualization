@@ -1,0 +1,63 @@
+---
+title: "Week7"
+author: "Talal Elammas"
+date: "March 9, 2019"
+output: html_document
+---
+
+
+
+
+```{r}
+library("ggplot2")
+
+##1) Save the data to a CSV file. 
+
+
+## This is heart data from kaggle for sample of people with heart disease include some medical informations from Clevland Research Center database, can be found on kaggle https://www.kaggle.com/ronitf/heart-disease-uci/version/1
+
+heart <- data.frame(read.csv(file = 'C:/Users/Talal/Documents/GitHub/Data_Visualization/heart.csv'))
+
+
+```
+
+
+
+```{r}
+## 1: Draw a relation between the age and the rest blood pressure to know the development of high blood pressure in the elderly, since the data include males (1) and female (0). I colored the data depend on sex; the smooth line shows that the trend of blood pressure on people with heart disease starts high in their 30 -40 and most of them their blood pressure going down in the age of 40s - 50s. In the 50s to 65  noticed that the blood pressure is high for most of our 300 people, this may be due to the challenges in these ages, and then it goes down after 70s.
+
+age <- heart[,1]
+
+
+
+
+#restbps resting blood pressure (in mm Hg on admission to the hospital)
+
+restbp <- qplot (age , trestbps , data = heart , color = sex , geom = c("point", "smooth" ) , main="Rest Bloodpressure Readings in an Elderly sample", xlab="age", ylab= "Rest Blood pressure" )
+
+restbp
+
+```
+
+
+
+
+
+```{r}
+##  for more analysis I decided to draw each sex on a different plot, I noticed that the Females in the age range age 55-70 have high blood pressures than the males, and overall Female have low blood pressures than the Males. I used the log age to get compressed plots. 
+
+log <- function(x){
+  for (i in seq_along(x)){
+    
+    y <- log2(x)
+    
+  }
+  y
+}
+
+logage <- c (log(age))
+
+
+ LogAge_Bpressure <- qplot ( logage,trestbps,data = heart,facets=.~sex , geom = c ("point" , "smooth") , main="Rest Bloodpressure Readings in an Elderly sample", xlab="logage", ylab= "Rest Blood pressure"   ) 
+ LogAge_Bpressure 
+```
