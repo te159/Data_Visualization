@@ -11,7 +11,7 @@ output: html_document
 ```{r}
 library("ggplot2")
 
-##1) Save the data to a CSV file. 
+## Save the data to a CSV file. 
 
 
 ## This is heart data from kaggle for sample of people with heart disease include some medical informations from Clevland Research Center database, can be found on kaggle https://www.kaggle.com/ronitf/heart-disease-uci/version/1
