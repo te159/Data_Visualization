@@ -16,7 +16,8 @@ library("ggplot2")
 
 ## This is heart data from kaggle for sample of people with heart disease include some medical informations from Clevland Research Center database, can be found on kaggle https://www.kaggle.com/ronitf/heart-disease-uci/version/1
 
-heart <- data.frame(read.csv(file = 'C:/Users/Talal/Documents/GitHub/Data_Visualization/heart.csv'))
+# download the file, add it to your directory, update the directory in the 
+heart <- data.frame(read.csv(file = 'UPDTATE YOUR DIRECTORY HERE'))
 
 
 ```
