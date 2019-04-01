@@ -31,7 +31,7 @@ Project <- data.frame(read.csv(file =  'C:/Users/Talal/Documents/GitHub/Data_Vis
 
 
 ```{r}
-## 1: The question we maight answer the relation between cities and the cancer disease percentage  among population, 
+## 1: The question we maight answer the relation between cities and the prevelance rate of cancer disease  among population, distribuated in US cities in the given data. 
 
 Project
 
