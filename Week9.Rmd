@@ -1,0 +1,78 @@
+---
+title: "Week9"
+author: "Talal Elammas"
+date: "March 31, 2019"
+output: html_document
+---
+
+
+
+```{r}
+library("ggplot2")
+library("rvest")
+
+## Save the data to a CSV file. 
+
+
+## This is heart data from kaggle for sample of people with heart disease include some medical informations from Clevland Research Center database, can be found on kaggle https://www.kaggle.com/ronitf/heart-disease-uci/version/1
+
+# download the file, add it to your directory, update the directory in the , make sures the slash between directories is forword slash
+heart <- data.frame(read.csv(file = 'C:/Users/Talal/Documents/GitHub/Data_Visualization/heart.csv'))
+
+
+```
+
+
+```{r}
+## 1:I want to predict at which age admitted people to hospitals with heart attack have the highest resting blood pressure among those whom are admitted with the same conditions from other ages.
+
+# select the first 50 lines from the table for the regression to be simple and clear.
+age <- c (heart[1:50,1])
+trestbps <- c(heart [1:50,4])
+
+## create the data frame, get the summary to understand the data,
+bloodpressure <- data.frame(age,trestbps)
+summary(bloodpressure)
+
+
+```
+
+
+
+```{r}
+Table1 <- (bloodpressure )[[1]]
+Table2 <- (bloodpressure )[[2]]
+
+# Consider x as table1 = Age
+# Consider y as table1 = Resting Blood pressuer
+
+x <- Table1
+y <- Table2
+##plot x and y
+plot( x, y, xlab = "age", ylab = "Resting Blood pressuer",  bg = "lightblue", col = "black", cex = 2, pch = 21, frame = FALSE)
+
+n <- length (y)
+fit <- lm(y ~ x)
+e <- resid (fit)
+yhat <- predict (fit)
+
+#create a plot between the age and e
+
+plot( x, e, xlab = "Age", ylab = "Resting Blood Pressure", bg = "lightblue", col = "black", cex = 2, pch = 21, frame = FALSE)
+
+
+#add the regression lines
+
+abline (h = 0, lwd = 2)
+
+#draw the red lines
+
+for (i in 1 : n) 
+  lines (c(x[i], x[i]), c(e[i],0), col = "red", lwd = 2)
+
+
+# as shown at age 52 people will likley got admitted to the hospitals with heart attacks and high resting blood pressure, while in age 63 they admitted with the same conditions and lowest resting blood pressure.
+
+```
+
+
