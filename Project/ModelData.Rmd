@@ -1,0 +1,221 @@
+---
+title: "Final_Project_Model"
+author: "Talal Elammas"
+author: "Hemangi Mhatre"
+
+date: "April 24, 2019"
+output: html_document
+---
+
+
+
+```{r}
+
+
+## Save the data to a CSV file. 
+
+
+##  Data were provided by the Centers for Disease Control and Prevention (CDC), Division of Population Health, Epidemiology and Surveillance Branch. The project was funded by the Robert Wood Johnson Foundation (RWJF) in conjunction with the CDC Foundation. 500 cities project city-level data in GIS-friendly format can be joined with city spatial data (https://chronicdata.cdc.gov/500-Cities/500-Cities-City-Boundaries/n44h-hy2j) in a geographic information system (GIS) to produce maps of 27 measures at the city-level. There are 4 measures (high blood pressure, taking high blood pressure medication, high cholesterol, cholesterol screening) in this 2018 release from the 2015 BRFSS that were the same as the 2017 release. 
+
+# download the file, add it to your directory, update the directory in the , make sures the slash between directories is forword slash
+# data Dictionary can be found on https://chronicdata.cdc.gov/500-Cities/500-Cities-City-level-Data-GIS-Friendly-Format-201/dxpw-cm5u
+
+Project <- data.frame(read.csv(file =  'C:/Users/mhatr/OneDrive/Desktop/project/selecteddata1.csv') , header = TRUE,  stringsAsFactors = FALSE)
+
+
+
+Project
+
+```
+
+
+
+```{r}
+
+State <- c (Project[,1])
+
+city <- c (Project[,2])
+
+PlaceFIPS <- c (Project[,3])
+
+population <- c (Project[,4])
+
+ppl_No_Insurance <- c (Project[,5])
+
+ppl_BPHIGH_Age_adjusted_prevalence <- c (Project[,6])
+
+ppl_CANCER_Age_adjusted_prevalence <- c (Project[,7])
+
+ppl_CANCER_Crude_Prevalence <- c (Project[,9])
+
+ppl_ASTHMA_Age_adjusted_prevalence <- c (Project[,8])
+
+summary(Project)
+
+
+```
+
+
+```{r}
+
+# Consider x as table1 = ppl_No_Insurance
+# Consider y as table1 = population
+
+x <- ppl_No_Insurance
+y <- population
+
+##plot x and y
+plot( x, y, xlab = "ppl with no Insurance", ylab = "population",  bg = "lightblue", col = "black", cex = 2, pch = 21, frame = FALSE, main = "regression model for people with no insurance and population")
+
+n <- length (y)
+fit <- lm(y ~ x)
+e <- resid (fit)
+yhat <- predict (fit)
+
+#create a plot between the people with no insurance and population
+
+
+plot( x, e, xlab = "ppl with no Insurance", ylab = "population", bg = "lightblue", col = "black", cex = 2, pch = 21, frame = FALSE,
+      main="residual plot for people with no insurance and population")
+
+
+#add the regression lines
+
+abline (h = 0, lwd = 2)
+
+#draw the red lines
+
+for (i in 1 : n) 
+  lines (c(x[i], x[i]), c(e[i],0), col = "red", lwd = 2)
+
+
+summary(fit)
+
+```
+
+
+```{r}
+
+# Consider x as table1 = ppl_BPHIGH_Age_adjusted_prevalence
+# Consider y as table1 = population
+
+x <- ppl_BPHIGH_Age_adjusted_prevalence
+y <- population
+
+##plot x and y
+plot( x, y, xlab = "ppl_BPHIGH_Age_adjusted_prevalence", ylab = "population",  bg = "lightblue", col = "black", cex = 2, pch = 21, frame = FALSE,main = "regression model for age adjusted prevalance of High Bp  among people and population")
+
+n <- length (y)
+fit <- lm(y ~ x)
+e <- resid (fit)
+yhat <- predict (fit)
+
+#create a plot between the age adjusted prevalance of High Bp among people and population 
+
+
+
+plot( x, e, xlab = "ppl_BPHIGH_Age_adjusted_prevalence", ylab = "population", bg = "lightblue", col = "black", cex = 2, pch = 21, frame = FALSE,main = "residual plot for age adjusted prevalance of High Bp among people and population")
+
+
+#add the regression lines
+
+abline (h = 0, lwd = 2)
+
+#draw the red lines
+
+for (i in 1 : n) 
+  lines (c(x[i], x[i]), c(e[i],0), col = "red", lwd = 2)
+
+summary(fit)
+
+```
+
+
+
+```{r}
+
+# Consider x as table1 = ppl_ASTHMA_Age_adjusted_prevalence
+# Consider y as table1 = population
+
+x <- ppl_ASTHMA_Age_adjusted_prevalence
+y <- population
+
+##plot x and y
+plot( x, y, xlab = "ppl_ASTHMA_Age_adjusted_prevalence", ylab = "population",  bg = "lightblue", col = "black", cex = 2, pch = 21, frame = FALSE, main="regression model for age adjusted prevalance of ASTHMA  among people and population")
+
+n <- length (y)
+fit <- lm(y ~ x)
+e <- resid (fit)
+yhat <- predict (fit)
+
+#create a plot between the age adjusted prevalance of Asthma  among people and population 
+
+
+plot( x, e, xlab = "ppl_ASTHMA_Age_adjusted_prevalence", ylab = "population", bg = "lightblue", col = "black", cex = 2, pch = 21, frame = FALSE,  main="residual plot for age adjusted prevalance of ASTHMA among people and population")
+
+
+#add the regression lines
+
+abline (h = 0, lwd = 2)
+
+#draw the red lines
+
+for (i in 1 : n) 
+  lines (c(x[i], x[i]), c(e[i],0), col = "red", lwd = 2)
+
+summary(fit)
+
+```
+
+
+```{r}
+
+# Consider x as table1 = ppl_CANCER_Age_adjusted_prevalence
+# Consider y as table1 = population
+
+x <- ppl_CANCER_Age_adjusted_prevalence
+y <- population
+
+##plot x and y
+plot( x, y, xlab = "ppl_CANCER", ylab = "population",  bg = "lightblue", col = "black", cex = 2, pch = 21, frame = FALSE,
+      main= "regression model for age adjusted prevalance of cancer  among people and population")
+
+n <- length (y)
+fit <- lm(y ~ x + ppl_CANCER_Crude_Prevalence)
+e <- resid (fit)
+yhat <- predict (fit)
+
+#create a plot between the age adjusted prevalance of Cancer among people and population 
+
+
+
+plot( x, e, xlab = "ppl_CANCER_Age_adjusted_prevalence", ylab = "population", bg = "lightblue", col = "black", cex = 2, pch = 21, frame = FALSE,  main="residual plot for age adjusted prevalance of cancer among people and population")
+
+
+#add the regression lines
+
+abline (h = 0, lwd = 2)
+
+#draw the red lines
+
+for (i in 1 : n) 
+  lines (c(x[i], x[i]), c(e[i],0), col = "red", lwd = 2)
+
+
+summary(fit)
+
+
+
+#Explaination-
+
+##As R^2 in this model(Data for cancer patients) is greater than all other models and closer to 1, we chose this model as good fit.
+##In this model, multiple R2 is 0.01654.It means, data variability is 1.6%
+
+##In this model,coefficient tells that population is expected to decrease when count of cancer patient increases by 1, holding variable of ppl_CANCER_Crude_Prevalence as constant.
+
+##The p-value for ppl_CANCER_Age_adjusted_prevalence is 0.060546. A very small value means that ppl_cancer is probably a better addition to this model.
+##The p-value for ppl_CANCER_Crude_Prevalence  is 0.573876. In other words, there's 57% chance that this predictor is not meaningful for the regression.
+
+
+
+```
